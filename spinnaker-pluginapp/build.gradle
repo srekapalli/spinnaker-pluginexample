@@ -1,0 +1,25 @@
+apply plugin: 'spinnaker.application'
+
+ext {
+    springConfigLocation = System.getProperty('spring.config.additional-location', "${System.getProperty('user.home')}/.spinnaker/")
+    springProfiles = System.getProperty('spring.profiles.active', "test,local")
+}
+
+run {
+    systemProperty('spring.config.additional-location', project.springConfigLocation)
+    systemProperty('spring.profiles.active', project.springProfiles)
+}
+mainClassName = 'com.netflix.spinnaker.app.Main'
+
+repositories {
+    maven {
+        url 'https://repo.spring.io/libs-snapshot'
+    }
+}
+
+dependencies {
+    api "org.springframework.boot:spring-boot-starter-web"
+    api "org.springframework.boot:spring-boot-starter-actuator"
+    implementation project(":spinnaker-pluginapi")
+    implementation "com.netflix.spinnaker.kork:kork-plugins"
+}

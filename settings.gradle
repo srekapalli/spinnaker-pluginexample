@@ -1,0 +1,3 @@
+rootProject.name = 'spinnaker-pluginexample'
+
+include 'spinnaker-pluginapp', 'spinnaker-pluginimpl', 'spinnaker-pluginapi'

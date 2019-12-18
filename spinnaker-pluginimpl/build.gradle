@@ -1,0 +1,16 @@
+dependencies {
+    implementation "com.netflix.spinnaker.kork:kork-plugins-api:$korkVersion"
+    implementation project(":spinnaker-pluginapi")
+
+    annotationProcessor group: 'org.pf4j', name: 'pf4j', version: '2.6.0'
+}
+
+jar {
+    manifest {
+        attributes "Plugin-Class": "com.netflix.spinnaker.plugin.api.ExamplePlugin",
+                "Plugin-Id": "srekapalli.exampleplugin",
+                "Plugin-Version": "1.0",
+                "Plugin-Provider": "srekapalli",
+                "Plugin-Requires": "spinnaker-pluginapp>=1.0.0"
+    }
+}

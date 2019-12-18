@@ -1,0 +1,23 @@
+spring:
+  profiles: default
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+logging:
+  level:
+    org:
+      pf4j: DEBUG
+    com:
+      netflix:
+        spinnaker: DEBUG
+
+spinnaker:
+  extensibility:
+    plugins:
+      srekapalli.exampleplugin:
+        enabled: true
+        config: {}
